@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -127,3 +129,19 @@ MEDIA_ROOT = BASE_DIR/'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('hy', gettext('Armenian')),
+    ('ru', gettext('Russia')),
+    ('en', gettext('English')),
+)
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'main.translation',
+)
+
+LOCALE_PATHS = (
+(BASE_DIR/ 'locale'),
+)

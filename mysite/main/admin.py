@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import HomeName, HomeImage, Contact
+from .models import HomeName, HomeImage, Contact, About
 # Register your models here.
 
 @admin.register(HomeName)
@@ -17,3 +17,5 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 admin.site.register(HomeImage)
+
+admin.site.register(About)

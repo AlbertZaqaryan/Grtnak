@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import HomeName, HomeImage, Contact
+from .models import HomeName, HomeImage, Contact, About
 # Create your views here.
 
 def home(request):
@@ -11,7 +11,8 @@ def home(request):
     })
 
 def about(request):
-    return render(request, 'main/about.html')
+    about_info = About.objects.all()[0]
+    return render(request, 'main/about.html', context={'about_info':about_info})
 
 
 def contact(request):
@@ -24,3 +25,10 @@ def contact(request):
         return redirect('home')
 
     return render(request, 'main/contact.html')
+
+
+def review(request):
+    review_list = Contact.objects.all()
+    return render(request, 'main/review.html', context={
+        'review_list':review_list
+    })

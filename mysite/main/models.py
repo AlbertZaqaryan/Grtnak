@@ -25,3 +25,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.username
+    
+
+class About(models.Model):
+
+    name = models.CharField('About name', max_length=60)
+    text = models.TextField('About text')
+
+    def __str__(self):
+        return self.text
